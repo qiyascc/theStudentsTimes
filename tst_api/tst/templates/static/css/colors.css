@@ -1,0 +1,23 @@
+/* colors.css */
+:root {
+    --tst-black: #000000;
+    --tst-gray-3: #888888;
+    --tst-gray-5: #333333;
+    --tst-white: #FFFFFF;
+    --tst-background: #EEE9FF;
+    --tst-milk: #FBFBFB;
+    --tst-primary: #3D246C;
+    --tst-secondary: #5C4B99;
+    --tst-tertiary: #9F91CC;
+}
+
+.bg-tst-black { background-color: var(--tst-black) !important; }
+.bg-tst-gray-3 { background-color: var(--tst-gray-3) !important; }
+.bg-tst-gray-5 { background-color: var(--tst-gray-5) !important; }
+.bg-tst-white { background-color: var(--tst-white) !important; }
+.bg-tst-background { background-color: var(--tst-background) !important; }
+.bg-tst-milk { background-color: var(--tst-milk) !important; }
+.bg-tst-primary { background-color: var(--tst-primary) !important; }
+.bg-tst-secondary { background-color: var(--tst-secondary) !important; }
+.bg-tst-tertiary { background-color: var(--tst-tertiary) !important; }
+.font-tst-tertiary { color: var(--tst-tertiary) !important; }

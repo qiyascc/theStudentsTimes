@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./static/css/colors.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body class="bg-tst-background">
+  <header class="w-full">
+    <nav class="bg-tst-primary text-white h-16 flex items-center justify-center">
+      <div class="w-11/12 flex justify-between items-center">
+        <a href="#" class="flex items-center">
+          <img src="https://example.com/back-icon.png" alt="Back" class="h-6 mr-2">
+        </a>
+        <div class="flex-grow text-center">
+          <span class="text-lg font-semibold">Page Title</span>
+        </div>
+        <a href="#" class="flex items-center">
+          <img src="https://example.com/download-icon.png" alt="Download" class="h-6 ml-2">
+        </a>
+      </div>
+    </nav>
+  </header>
+  <main class="flex flex-col md:flex-row">
+    <div class="flex flex-col w-full md:w-1/2">
+      <div class="pt-4 pb-4 w-full">
+        <img src="https://graph.org/file/8d7bdd5dc20eca43a7491.jpg" alt="Main Image" style="width: 90%; height: auto; margin: auto;">
+      </div>
+      <div id="desktopDiv3Container" class="w-full flex justify-center align-center flex-wrap"></div>
+    </div>
+    <div class="p-4 w-full md:w-1/2 flex flex-col">
+      <div class="flex flex-col items-center">
+        <div class="divider-line"></div>
+        <h2 class="text-center">Header Text</h2>
+        <div class="divider-line"></div>
+      </div>
+      <div class="overflow-auto md:max-h-[80%] p-4 w-full flex flex-wrap justify-center">
+        <div class="my-2 bg-white p-4 text-black w-11/12">
+          <h3 class="font-bold mb-2">Content 1 Header</h3>
+          <p>This is the description for Content 1. It's sized to fit the container's width.</p>
+        </div>
+        <div class="my-2 bg-white p-4 text-black w-11/12">
+          <h3 class="font-bold mb-2">Content 2 Header</h3>
+          <p>This is the description for Content 2. More details can be added here.</p>
+        </div>
+        <div class="my-2 bg-white p-4 text-black w-11/12">
+          <h3 class="font-bold mb-2">Content 2 Header</h3>
+          <p>This is the description for Content 2. More details can be added here.</p>
+        </div>
+        <div class="my-2 bg-white p-4 text-black w-11/12">
+          <h3 class="font-bold mb-2">Content 2 Header</h3>
+          <p>This is the description for Content 2. More details can be added here.</p>
+        </div>
+        <div class="my-2 bg-white p-4 text-black w-11/12">
+          <h3 the class="font-bold mb-2">Content 3 Header</h3>
+          <p>This is the description for Content 3. It also matches the styling requirements.</p>
+        </div>
+      </div>
+    </div>
+    <div id="mobileDiv3Container" class="w-full hidden md:hidden"></div>
+  </main>
+  <footer class="w-full bg-tst-primary text-white p-4">
+    <div class="flex justify-center items-center">
+      <a href="https://texnopark.com" target="_blank" class="flex items-center justify-center">
+        <img src="white-logo.png" alt="Logo" class="h-10 mr-3">
+        <p>tərəfindən hazırlanmışdır.</p>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    class ContentManager {
+      constructor(content, desktopContainerId, mobileContainerId, buttonLink) {
+        this.content = content;
+        this.desktopContainer = document.getElementById(desktopContainerId);
+        this.mobileContainer = document.getElementById(mobileContainerId);
+        this.buttonLink = buttonLink;
+      }
+
+      updateContent() {
+        const targetContainer = window.innerWidth < 768 ? this.mobileContainer : this.desktopContainer;
+        const otherContainer = targetContainer === this.mobileContainer ? this.desktopContainer : this.mobileContainer;
+
+        targetContainer.innerHTML = this.content;
+        if (targetContainer === this.desktopContainer) {
+          this.appendButton(targetContainer);
+        }
+        otherContainer.innerHTML = '';
+        targetContainer.classList.remove('hidden');
+        otherContainer.classList.add('hidden');
+      }
+      appendButton(container) {
+        const buttonHtml = `
+      <div class="mt-4 w-[90%] flex justify-center">
+        <a href="${this.buttonLink}" class="bg-tst-primary text-white font-bold py-2 px-4 rounded w-full flex justify-between items-center mb-5">
+          <span>Download</span>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14v6h16v-6m-8-7l-6 6m6-6v15m6-9l-6 6"></path>
+          </svg>
+        </a>
+      </div>
+    `;
+        container.innerHTML += buttonHtml;
+      }
+    }
+
+    const div3Content = `
+  <div class="bg-tst-primary md:divider-line md:w-[90%] p-4 flex flex-col items-center">
+    <p class="text-2xl mb-4">First Item - Larger Text</p>
+    <p>Second Item</p>
+    <p>Third Item</p>
+  </div>
+`;
+
+    const contentManager = new ContentManager(div3Content, 'desktopDiv3Container', 'mobileDiv3Container', 'https://example.com/button-link');
+    document.addEventListener('DOMContentLoaded', () => contentManager.updateContent());
+    window.addEventListener('resize', () => contentManager.updateContent());
+  </script>
+</body>
+
+</html>

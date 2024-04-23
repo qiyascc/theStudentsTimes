@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./static/css/colors.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+  
+</head>
+
+<body class="bg-tst-background">
+  <header class="w-full">
+    <nav class="w-full text-white bg-tst-primary">
+      <div class="flex justify-center w-full">
+        <div class="w-4/5 flex justify-between items-center p-4">
+          <img src="logo.png" alt="The Student Times - E Journal Logo" class="h-8">
+          <div class="relative">
+            <button id="dropdown" class="h-8 px-4 py-2 rounded flex items-center">
+              <span id="dropdown-text"></span>
+              <span id="dropdown-icon" class="ml-2 transition-transform transform">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </span>
+            </button>
+            <div id="dropdown-menu" class="absolute right-0 w-48 bg-white shadow-md mt-2 rounded hidden">
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="w-full py-1 mt-5">
+      <div class="w-4/5 mx-auto flex flex-col md:flex-row" id="header-container">
+
+
+        <div class="w-full md:w-1/2 flex justify-center items-center p-4 md:h-auto existing-div">
+          <p class="font-bold text-2xl md:text-4xl">
+            The Student Times universitimizin rəsmi
+            e-qəzetidir.
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="w-full">
+    <div class="divider-text-container text-center p-4 flex items-center justify-center">
+      <div class="divider-line"></div>
+      <div class="px-4 font-tst-tertiary">Yayımlanmış e-qəzetlər</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="w-full flex justify-center p-4">
+      <div class="w-[90%] grid grid-cols-2 md:grid-cols-3 gap-4" id="journal-container">
+
+      </div>
+    </div>
+  </main>
+  <footer class="w-full bg-tst-primary text-white p-4">
+    <div class="flex justify-center items-center">
+      <a href="https://texnopark.com" target="_blank" class="flex items-center justify-center">
+        <img src="white-logo.png" alt="Logo" class="h-10 mr-3">
+        <p>tərəfindən hazırlanmışdır.</p>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdownYears = [
+        { year: '2024', link: '#' },
+        { year: '2023', link: '#' },
+        { year: '2022', link: '#' }
+    ];
+
+      const dropdownButton = document.querySelector('#dropdown');
+      const dropdownText = document.querySelector('#dropdown-text');
+      const dropdownMenu = document.querySelector('#dropdown-menu');
+
+      function populateDropdown(years) {
+        years.sort((a, b) => b.year - a.year);
+        dropdownText.textContent = years[0].year;
+
+        years.forEach(yearInfo => {
+          const item = document.createElement('a');
+          item.href = yearInfo.link;
+          item.textContent = yearInfo.year;
+          item.className = 'block px-4 py-2 text-gray-800 hover:bg-gray-100';
+          item.addEventListener('click', function(e) {
+            dropdownText.textContent = yearInfo.year;
+            dropdownMenu.classList.add('hidden');
+            e.preventDefault();
+          });
+          dropdownMenu.appendChild(item);
+        });
+      }
+      dropdownButton.addEventListener('click', function() {
+        dropdownMenu.classList.toggle('hidden');
+      });
+      populateDropdown(dropdownYears);
+    });
+  </script>
+First Item - Larger Text
+
+Second Item
+
+Third Item
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const journalData = [
+        { title: 'Item 1', imageUrl: 'https://graph.org/file/8d7bdd5dc20eca43a7491.jpg', date: '01.04.2024', month: 'qiyas' },
+        { title: 'Item 2', imageUrl: 'https://example.com/image2.jpg', date: '02.04.2024', month: 'qiyas' },
+        { title: 'Item 3', imageUrl: 'https://example.com/image3.jpg', date: '03.04.2024', month: 'qiyas' },
+        { title: 'Item 4', imageUrl: 'https://example.com/image4.jpg', date: '04.04.2024', month: 'qiyas' },
+        { title: 'Item 5', imageUrl: 'https://example.com/image5.jpg', date: '05.04.2024', month: 'qiyas' },
+        { title: 'Item 6', imageUrl: 'https://example.com/image6.jpg', date: '06.04.2024', month: 'qiyas' },
+        { title: 'Item 7', imageUrl: 'https://example.com/image7.jpg', date: '07.04.2024', month: 'qiyas' },
+        { title: 'Item 8', imageUrl: 'https://example.com/image8.jpg', date: '08.04.2024', month: 'qiyas' },
+        { title: 'Item 9', imageUrl: 'https://example.com/image9.jpg', date: '09.04.2024', month: 'qiyas' },
+        { title: 'Item 10', imageUrl: 'https://example.com/image10.jpg', date: '10.04.2024', month: 'qiyas' },
+        { title: 'Item 11', imageUrl: 'https://example.com/image11.jpg', date: '11.04.2024', month: 'qiyas' },
+        { title: 'Main Journal Item', imageUrl: 'https://graph.org/file/8d7bdd5dc20eca43a7491.jpg', date: '12.04.2024', month: 'qiyas' }
+        ];
+
+      const headerContainer = document.getElementById('header-container');
+      const journalContainer = document.getElementById('journal-container');
+      const existingDiv = headerContainer.children[0];
+
+      journalData.forEach((item, index) => {
+        const link = document.createElement('a');
+        link.href = `https://example.com/${item.month}`;
+        link.className = `col-span-1 aspect-w-10 aspect-h-7 flex flex-wrap justify-center rounded-xl aspect-ratio-custom journal-item${index === journalData.length - 1 ? ' w-full md:w-1/2 main-journal-item ronded-2xl' : ''}`;
+
+
+        const contentDiv = document.createElement('div');
+        if (index === journalData.length - 1) {
+          contentDiv.className = 'rounded-t-2xl w-full aspect-ratio-16-9';
+          contentDiv.style.backgroundImage = `url('${item.imageUrl}')`;
+          contentDiv.style.backgroundSize = "cover";
+          contentDiv.style.backgroundPosition = "center";
+        } else {
+          contentDiv.className = 'rounded-xl bg-red-200 w-full aspect-ratio-16-9';
+          contentDiv.style.backgroundImage = `url('${item.imageUrl}')`;
+          contentDiv.style.backgroundSize = "cover";
+          contentDiv.style.backgroundPosition = "center";
+        }
+
+        const lowerDiv = document.createElement('div');
+        lowerDiv.className = 'w-full p-2 flex justify-between';
+        if (index === journalData.length - 1) {
+          lowerDiv.className += ' bg-tst-white rounded-t-none rounded-b-2xl';
+        }
+
+        const titleP = document.createElement('p');
+        titleP.textContent = item.month; //item.title
+        const dateP = document.createElement('p');
+        dateP.textContent = `${item.date}`;
+
+        lowerDiv.appendChild(titleP);
+        lowerDiv.appendChild(dateP);
+
+        link.appendChild(contentDiv);
+        link.appendChild(lowerDiv);
+
+        if (index === journalData.length - 1) {
+          headerContainer.insertBefore(link, existingDiv);
+        } else {
+          journalContainer.appendChild(link);
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

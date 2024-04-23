@@ -1,0 +1,35 @@
+@import url("colors.css");
+
+.divider-text-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.divider-line {
+  flex-grow: 1 !important;
+  height: 1px !important;
+  background: var(--tst-tertiary) !important;
+}
+.flex flex-wrap justify-center aspect-ratio-custom journal-item {
+  aspect-ratio: 1.4 / 1;
+}
+
+.aspect-ratio-16-9 {
+  aspect-ratio: 16 / 9;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: fixed;
+}
+
+.bg-tst {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.article-image {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
